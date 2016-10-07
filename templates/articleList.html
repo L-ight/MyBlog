@@ -1,0 +1,39 @@
+﻿{% extends "basic.html" %}
+{% block content %}
+<section class="container page-home">
+    <section class="container page-home">
+        <div id="main-content" class="wrap-container zerogrid">
+            <article>
+                <div class="col-1-2 right">
+                    <img src="{{ Item.img.url }}" />
+                </div>
+                <div class="col-1-2 left">
+                    <a class="art-category left">Description</a>
+                    <div class="clear"></div>
+				<div class="art-content">
+					<h2>{{ Item.name }}</h2>
+					<div class="line"></div>
+					<p>{{ Item.summary }}</p>
+				</div>
+			</div>
+            </article>
+        </div>
+    </section>
+	<div id="main-content" class="wrap-container zerogrid">
+        {% for article in ArticleList %}
+		<article>
+			<div class="col-1-1">
+				<div class="clear"></div>
+				<div class="art-content">
+					<h2>{{ article.title }}</h2>
+					<div class="info">文章创建于：{{ article.created_Datetime }}      文章最后修改于：{{ article.updated_Datetime }}</div>
+					<div class="line"></div>
+					<p>{{ article.summary }}</p>
+					<a href="/Article/{{ article.id }}" class="more">Read More</a>
+				</div>	
+			</div>
+		</article>
+        {% endfor %}
+	</div>
+</section>
+{% endblock %}

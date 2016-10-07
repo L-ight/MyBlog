@@ -1,0 +1,45 @@
+﻿
+
+{% extends "basic.html" %}
+{% block content %}
+<section class="container page-home">
+	<div id="main-content" class="wrap-container zerogrid">
+        {% for item in Classifications_Card %}
+		<article>
+        {% if forloop.counter0|divisibleby:2 %}
+			<div class="col-1-2 right">
+				<img src="{{ item.Classifications.img.url }}" />
+			</div>
+			<div class="col-1-2 left">
+            {% else %}
+            <div class="col-1-2 ">
+				<img src="{{ item.Classifications.img.url }}" />
+			</div>
+			<div class="col-1-2 ">
+        {% endif %}
+				<div class="clear"></div>
+				<div class="art-content">
+					<h2>{{ item.Classifications.name }}</h2>
+					<div class="line"></div>
+					<p>{{ item.Classifications.summary }}</p>
+                    <section class="container page-single">
+                    <article>
+                    <div  class="tag">
+						<span>Tag : </span>
+						<ul>
+                            {% for tag in item.Tags%}
+							<li><a href="/Tag/{{ tag.name }}">{{ tag.name }}</a></li>
+                            {% endfor %}
+						</ul>
+					</div>
+                    </article>
+                    </section>
+					<a href="/Classifications/{{item.Classifications.name}}" class="more">Read More</a>
+				</div>
+			</div>
+		</article>
+        {% endfor %}
+	</div>
+	
+</section>
+{% endblock %}

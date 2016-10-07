@@ -1,0 +1,33 @@
+﻿{% extends "basic.html" %}
+{% block content %}
+<!--------------Content--------------->
+<section class="container page-single">
+	<div class="wrap-container zerogrid">
+		<div class="col">
+			<div id="main-content" class="wrap-col">
+				<article>
+					<div class="art-header">
+						<h2>{{ article.title }}</h2>
+						<div class="info">文章创建于：{{ article.created_Datetime }}      文章最后修改于：{{ article.updated_Datetime }}</div>
+						<div class="line"></div>
+					</div>
+					<div class="art-content">
+                        {% autoescape off %}
+                            {{ article.content}}
+                        {% endautoescape %}
+					</div>
+					<div class="tag">
+						<span>Tag : </span>
+						<ul>
+                            {% for tag in tags %}
+							<li><a href="/Tag/{{ tag.name }}">{{ tag.name }}</a></li>
+                            {% endfor %}
+						</ul>
+					</div>
+				</article>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}
